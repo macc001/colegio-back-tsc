@@ -41,7 +41,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var bodyParser = require("body-parser");
-// rutas
 var index_routes_1 = __importDefault(require("../routes/index.routes"));
 var Server = /** @class */ (function () {
     function Server(port) {
@@ -51,11 +50,17 @@ var Server = /** @class */ (function () {
         this.middlewares();
         this.routes();
     }
+    Object.defineProperty(Server, "instance", {
+        get: function () {
+            return this._instance || (this._instance = new Server());
+        },
+        enumerable: true,
+        configurable: true
+    });
     Server.prototype.settings = function () {
         this.app.set("port", this.port || process.env.PORT || 5000);
     };
     Server.prototype.middlewares = function () {
-        this.app.use(express_1.default.json());
         this.app.use(function (req, res, next) {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method");
@@ -63,9 +68,9 @@ var Server = /** @class */ (function () {
             res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
             next();
         });
-        this.app.use(express_1.default.urlencoded({ extended: false }));
-        this.app.use(cors_1.default());
+        this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(bodyParser.json());
+        this.app.use(cors_1.default({ origin: true, credentials: true }));
     };
     Server.prototype.routes = function () {
         this.app.use(index_routes_1.default);

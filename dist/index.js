@@ -42,7 +42,7 @@ function main() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    server = new server_server_1.Server();
+                    server = server_server_1.Server.instance;
                     return [4 /*yield*/, server.listen()];
                 case 1:
                     _a.sent();

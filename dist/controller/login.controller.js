@@ -120,15 +120,4 @@ function renovartoken(req, res) {
         });
     });
 }
-function prueba(req, res) {
-    return __awaiter(this, void 0, void 0, function () {
-        return __generator(this, function (_a) {
-            res.status(200).send({
-                ok: true,
-                prueba: "esto es una prueba post en heroku"
-            });
-            return [2 /*return*/];
-        });
-    });
-}
-exports.default = { login: login, renovartoken: renovartoken, prueba: prueba };
+exports.default = { login: login, renovartoken: renovartoken };

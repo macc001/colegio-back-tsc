@@ -13,7 +13,6 @@ var LoginRouter = /** @class */ (function () {
     }
     LoginRouter.prototype.routes = function () {
         this.router.post("/ingresar", login_controller_1.default.login);
-        this.router.get("/prueba", login_controller_1.default.prueba);
         this.router.post("/renovartoken", auth_middleware_1.default.ensureAuth, login_controller_1.default.renovartoken);
     };
     return LoginRouter;
