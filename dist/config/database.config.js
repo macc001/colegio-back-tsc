@@ -1,10 +1,4 @@
 "use strict";
-// const postgresConection = {
-//   host: "35.238.13.15",
-//   user: "postgres",
-//   password: "18dejuliotengo20",
-//   database: "colegio-si2",
-//   port: 5432
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -41,20 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-//   // host: "ec2-174-129-29-101.compute-1.amazonaws.com",
-//   // user: "rgqyrlnalvhkmh",
-//   // password: "0c34c9f4463ad2905ec7bbaa5d944cd106d18e9969274a05abe48134a632cd6a",
-//   // database: "d270cpf50jv4au",
-//   // port: 5432
-// };
-// export default postgresConection;
 var pg_1 = require("pg");
-//   host: "35.238.13.15",
-//   user: "postgres",
-//   password: "18dejuliotengo20",
-//   database: "colegio-si2",
-//   port: 5432
-//   connectionLimit: 10
 function connect() {
     return __awaiter(this, void 0, void 0, function () {
         var connection;

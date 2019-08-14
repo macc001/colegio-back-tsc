@@ -40,6 +40,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
+var socket_io_1 = __importDefault(require("socket.io"));
+var http_1 = __importDefault(require("http"));
 var bodyParser = require("body-parser");
 var index_routes_1 = __importDefault(require("../routes/index.routes"));
 var Server = /** @class */ (function () {
@@ -49,7 +51,16 @@ var Server = /** @class */ (function () {
         this.settings();
         this.middlewares();
         this.routes();
+        this.httpServer = new http_1.default.Server(this.app);
+        this.io = socket_io_1.default(this.httpServer);
+        this.escucharSocket();
     }
+    Server.prototype.escucharSocket = function () {
+        console.log("escuchando socket");
+        this.io.on("connection", function (cliente) {
+            console.log("cliente conectado");
+        });
+    };
     Object.defineProperty(Server, "instance", {
         get: function () {
             return this._instance || (this._instance = new Server());

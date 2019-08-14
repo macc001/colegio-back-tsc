@@ -80,8 +80,9 @@ function login(req, res) {
                         error: err_1
                     });
                     return [3 /*break*/, 9];
-                case 9:
-                    conn.end();
+                case 9: return [4 /*yield*/, conn.end()];
+                case 10:
+                    _b.sent();
                     return [2 /*return*/];
             }
         });
