@@ -90,7 +90,7 @@ var Server = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.app.listen(this.app.get("port"))];
+                    case 0: return [4 /*yield*/, this.httpServer.listen(this.app.get("port"))];
                     case 1:
                         _a.sent();
                         console.log("Server on port", this.app.get("port"));
