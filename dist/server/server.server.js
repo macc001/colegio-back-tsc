@@ -37,6 +37,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
@@ -44,6 +51,7 @@ var socket_io_1 = __importDefault(require("socket.io"));
 var http_1 = __importDefault(require("http"));
 var bodyParser = require("body-parser");
 var index_routes_1 = __importDefault(require("../routes/index.routes"));
+var socket = __importStar(require("../socket/socket.socket"));
 var Server = /** @class */ (function () {
     function Server(port) {
         this.port = port;
@@ -56,9 +64,11 @@ var Server = /** @class */ (function () {
         this.escucharSocket();
     }
     Server.prototype.escucharSocket = function () {
+        var _this = this;
         console.log("escuchando socket");
         this.io.on("connection", function (cliente) {
-            console.log("cliente conectado");
+            socket.mensaje(cliente, _this.io);
+            socket.desconectar(cliente);
         });
     };
     Object.defineProperty(Server, "instance", {
