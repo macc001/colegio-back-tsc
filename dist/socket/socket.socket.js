@@ -11,3 +11,7 @@ exports.mensaje = function (cliente, io) {
         io.emit("mensaje-nuevo", payload);
     });
 };
+function eventDataTime() {
+    return new Date().toLocaleDateString() + " / " + new Date().toLocaleTimeString() + " ";
+}
+exports.eventDataTime = eventDataTime;

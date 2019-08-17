@@ -67,8 +67,10 @@ var Server = /** @class */ (function () {
         var _this = this;
         console.log("escuchando socket");
         this.io.on("connection", function (cliente) {
+            console.log("cliente conectado");
             socket.mensaje(cliente, _this.io);
             socket.desconectar(cliente);
+            console.log(socket.eventDataTime());
         });
     };
     Object.defineProperty(Server, "instance", {
