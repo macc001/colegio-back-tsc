@@ -141,3 +141,7 @@ tsconfig.json
 README.md
 
 .gitignore
+
+## release
+
+agregar tag git tag v1.0.0 publicar tag git push --tags
