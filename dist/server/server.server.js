@@ -65,9 +65,10 @@ var Server = /** @class */ (function () {
     }
     Server.prototype.escucharSocket = function () {
         var _this = this;
-        console.log("escuchando socket");
+        console.log("escuchando conexiones");
         this.io.on("connection", function (cliente) {
-            console.log("cliente conectado");
+            socket.conectarCliente(cliente);
+            socket.configurarUsuario(cliente, _this.io);
             socket.mensaje(cliente, _this.io);
             socket.desconectar(cliente);
             console.log(socket.eventDataTime());

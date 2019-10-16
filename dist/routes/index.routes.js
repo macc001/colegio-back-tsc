@@ -7,6 +7,7 @@ var express_1 = __importDefault(require("express"));
 // rutas
 var login_routes_1 = __importDefault(require("../routes/login.routes"));
 var profesor_routes_1 = __importDefault(require("../routes/profesor.routes"));
+var chat_routes_1 = __importDefault(require("../routes/chat.routes"));
 var IndexRouter = /** @class */ (function () {
     function IndexRouter() {
         this.app = express_1.default();
@@ -15,6 +16,7 @@ var IndexRouter = /** @class */ (function () {
     IndexRouter.prototype.index_routes = function () {
         this.app.use("/login", login_routes_1.default);
         this.app.use("/profesor", profesor_routes_1.default);
+        this.app.use("/chat", chat_routes_1.default);
     };
     return IndexRouter;
 }());
